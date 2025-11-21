@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Settings/Scenes/2D URP Scene Template.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: c4828f5186433e847999a0c7027e76b5
+  - enabled: 1
+    path: Assets/Scenes/daproject.unity
+    guid: b8fa25b9d22fc8e46943dc7cc1e07f6c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e7435b986bdca284e8ffbbaa7dffbb3f, type: 3}
   m_UseUCBPForAssetBundles: 0

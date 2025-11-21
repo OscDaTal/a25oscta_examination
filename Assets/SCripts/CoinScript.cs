@@ -16,9 +16,4 @@ public class CoinScript : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        collected.Invoke();
-    }
 }

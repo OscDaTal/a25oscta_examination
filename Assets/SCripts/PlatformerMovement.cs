@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
             /////////////// INFORMATION ///////////////
 // This script automatically adds a Rigidbody2D, CapsuleCollider2D and CircleCollider2D component in the inspector.
@@ -16,6 +18,8 @@ public class PlatformerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;
     // [SerializeField] private float gravityMultiplier = 1;    //unused
     [SerializeField] private SpriteRenderer spriteRenderer;
+    public UnityEvent coincollect;
+    public string tagToActivate;
 
     public bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
     
@@ -101,8 +105,7 @@ public class PlatformerMovement : MonoBehaviour
         else
         {
             animator.SetBool("IsRunning", false);
-        }
-        print(animator.GetBool("IsRunning"));
+        } 
     }
 
     private bool IsGrounded()
@@ -160,7 +163,6 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (controlEnabled)
         {
-            print(context);
             moveInput = context.ReadValue<Vector2>().normalized;
         }
         else
@@ -184,6 +186,14 @@ public class PlatformerMovement : MonoBehaviour
         {
             jumpReleased = true;
             jumpInput = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(tagToActivate))
+        {
+            coincollect.Invoke();
         }
     }
 }
