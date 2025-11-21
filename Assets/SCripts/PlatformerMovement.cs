@@ -81,9 +81,9 @@ public class PlatformerMovement : MonoBehaviour
         if (spriteRenderer)
         {
             if (moveInput.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (moveInput.x < -0.01f)
                 spriteRenderer.flipX = true;
+            else if (moveInput.x < -0.01f)
+                spriteRenderer.flipX = false;
         }
     }
 
@@ -96,8 +96,13 @@ public class PlatformerMovement : MonoBehaviour
         // Write movement animation code here. (Suggestion: send your current velocity into the Animator for both the x- and y-axis.)
         if (Mathf.Abs(velocity.x) > 0)
         {
-            
+            animator.SetBool("IsRunning", true);
         }
+        else
+        {
+            animator.SetBool("IsRunning", false);
+        }
+        print(animator.GetBool("IsRunning"));
     }
 
     private bool IsGrounded()
@@ -155,6 +160,7 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (controlEnabled)
         {
+            print(context);
             moveInput = context.ReadValue<Vector2>().normalized;
         }
         else
